@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="Vanias Castle"
-run/main_scene="uid://dhe8rhtxhoubg"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://Assets/Sprites/icon.svg"
 

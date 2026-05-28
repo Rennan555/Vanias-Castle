@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://diqiolbo2agmu"]
+
+[node name="ItemEntity" type="StaticBody2D"]
