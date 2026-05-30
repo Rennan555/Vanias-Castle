@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuoncfhv281xr"]
+
+[ext_resource type="PackedScene" uid="uid://cb6f6i7nbpgjh" path="res://Entities/Characters/CharacterEntity.tscn" id="1_wmafk"]
+[ext_resource type="Script" uid="uid://bj4gae7mbb0eg" path="res://Scripts/Player.cs" id="2_atj7v"]
+[ext_resource type="Texture2D" uid="uid://bous41dyptvvo" path="res://Assets/Sprites/icon.svg" id="2_n35p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atj7v"]
+size = Vector2(127, 126)
+
+[node name="PlayerEntity" instance=ExtResource("1_wmafk")]
+script = ExtResource("2_atj7v")
+
+[node name="CollisionArea" parent="." index="0"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_atj7v")
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_n35p4")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhe8rhtxhoubg"]
+[gd_scene load_steps=4 format=3 uid="uid://dhe8rhtxhoubg"]
 
 [ext_resource type="Script" uid="uid://doglsixggjm3b" path="res://Scripts/Scene.cs" id="1_b5ayd"]
+[ext_resource type="PackedScene" uid="uid://cuoncfhv281xr" path="res://Entities/Characters/PlayerEntity.tscn" id="2_5lt6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0r02p"]
 size = Vector2(1165, 118)
@@ -13,3 +14,8 @@ script = ExtResource("1_b5ayd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(579, 590)
 shape = SubResource("RectangleShape2D_0r02p")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="CharacterEntity" parent="." instance=ExtResource("2_5lt6y")]
+position = Vector2(469, 302)
