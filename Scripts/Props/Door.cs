@@ -30,7 +30,8 @@ public partial class Door : Node2D
 		{
 			// Inicializa próxima cena e muda
 			// TODO: Impedir que o player precione mais de uma vez para entrar na porta, está bugando
-			QueueFree();
+			SetProcess(false);
+			
 			PackedScene nextScene = GD.Load<PackedScene>($"res://Scenes/{this.nextSceneName}.tscn");
 			Scene next = nextScene.Instantiate<Scene>();
 			next.setInitialDoor(this.nextDoorName);

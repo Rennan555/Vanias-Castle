@@ -31,7 +31,7 @@ grow_horizontal = 2
 text = "Aperte CIMA para entrar"
 
 [node name="SpawnMarker" type="Marker2D" parent="."]
-position = Vector2(100, 0)
+position = Vector2(150, 0)
 
 [connection signal="SpawnPlayer" from="." to="." method="_SpawnPlayer"]
 [connection signal="body_entered" from="Area2D" to="." method="_BodyEntered"]
