@@ -21,7 +21,7 @@ public partial class Scene : Node2D
 		if (this.initialDoor != "")
 		{
 			// Ativa função de Door para spawnar o player
-			GD.Print("Spawnar player");
+			GD.Print(this.initialDoor);
 			
 			Door initialDoor = GetNode<Door>("DoorsNode/" + this.initialDoor);
 			initialDoor.EmitSignal(Door.SignalName.SpawnPlayer);

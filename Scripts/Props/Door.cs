@@ -7,12 +7,16 @@ public partial class Door : Node2D
 	public delegate void SpawnPlayerEventHandler();
 	
 	[Export]
-	private string nextDoor;
+	private string nextSceneName;
+	
+	[Export]
+	private string nextDoorName;
 	private bool isOnDoor = false;
 	
 	[Export]
 	private Label label;
 	private Marker2D spawnMarker;
+	private Godot.Node2D player;
 	
 	public override void _Ready()
 	{
@@ -22,9 +26,16 @@ public partial class Door : Node2D
 	
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionPressed("Up") && this.isOnDoor)
+		if (Input.IsActionJustReleased("Up") && this.isOnDoor)
 		{
-			
+			// Inicializa próxima cena e muda
+			// TODO: Impedir que o player precione mais de uma vez para entrar na porta, está bugando
+			QueueFree();
+			PackedScene nextScene = GD.Load<PackedScene>($"res://Scenes/{this.nextSceneName}.tscn");
+			Scene next = nextScene.Instantiate<Scene>();
+			next.setInitialDoor(this.nextDoorName);
+			GetTree().CurrentScene.AddChild(next);
+			this.player.QueueFree();
 		}
 	}
 	
@@ -34,6 +45,7 @@ public partial class Door : Node2D
 		{
 			this.isOnDoor = true;
 			this.label.Visible = true;
+			this.player = body;
 		}
 	}
 	
