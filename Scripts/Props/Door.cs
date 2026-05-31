@@ -3,14 +3,21 @@ using System;
 
 public partial class Door : Node2D
 {
+	[Signal]
+	public delegate void SpawnPlayerEventHandler();
+	
 	[Export]
 	private string nextDoor;
 	private bool isOnDoor = false;
+	
+	[Export]
 	private Label label;
+	private Marker2D spawnMarker;
 	
 	public override void _Ready()
 	{
 		this.label = GetNode<Label>("Label");
+		this.spawnMarker = GetNode<Marker2D>("SpawnMarker");
 	}
 	
 	public override void _Process(double delta)
@@ -37,5 +44,14 @@ public partial class Door : Node2D
 			this.isOnDoor = false;
 			this.label.Visible = false;
 		}
+	}
+	
+	// Spawnar player no lugar do marker
+	public void _SpawnPlayer()
+	{
+		PackedScene playerEntity = GD.Load<PackedScene>("res://Entities/Characters/PlayerEntity.tscn");
+		Player player = playerEntity.Instantiate<Player>();
+		player.GlobalPosition = this.spawnMarker.GlobalPosition;
+		GetTree().CurrentScene.AddChild(player);
 	}
 }

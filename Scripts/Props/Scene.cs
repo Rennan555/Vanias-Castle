@@ -18,10 +18,13 @@ public partial class Scene : Node2D
 		this.doorsNode = GetNode<Node2D>("DoorsNode");
 		this.doors = doorsNode.GetChildren();
 		
-		if (this.initialDoor == "")
+		if (this.initialDoor != "")
 		{
 			// Ativa função de Door para spawnar o player
 			GD.Print("Spawnar player");
+			
+			Door initialDoor = GetNode<Door>("DoorsNode/" + this.initialDoor);
+			initialDoor.EmitSignal(Door.SignalName.SpawnPlayer);
 		}
 	}
 	

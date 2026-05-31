@@ -4,7 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://irg85jgmckxq" path="res://Entities/Props/DoorEntity.tscn" id="3_8k7wh"]
 
 [node name="TestScene" instance=ExtResource("1_5lt6y")]
+initialDoor = "Door1"
 
 [node name="Door1" parent="DoorsNode" index="0" instance=ExtResource("3_8k7wh")]
+position = Vector2(573, 104)
 
 [node name="Door2" parent="DoorsNode" index="1" instance=ExtResource("3_8k7wh")]
+position = Vector2(265, 106)
