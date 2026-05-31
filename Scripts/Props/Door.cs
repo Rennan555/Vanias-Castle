@@ -17,11 +17,13 @@ public partial class Door : Node2D
 	private Label label;
 	private Marker2D spawnMarker;
 	private Godot.Node2D player;
+	private Node currentScene;
 	
 	public override void _Ready()
 	{
 		this.label = GetNode<Label>("Label");
 		this.spawnMarker = GetNode<Marker2D>("SpawnMarker");
+		this.currentScene = GetTree().CurrentScene;
 	}
 	
 	public override void _Process(double delta)
@@ -35,7 +37,8 @@ public partial class Door : Node2D
 			PackedScene nextScene = GD.Load<PackedScene>($"res://Scenes/{this.nextSceneName}.tscn");
 			Scene next = nextScene.Instantiate<Scene>();
 			next.setInitialDoor(this.nextDoorName);
-			GetTree().CurrentScene.AddChild(next);
+			GetTree().Root.AddChild(next);
+			this.currentScene.QueueFree();
 			this.player.QueueFree();
 		}
 	}
