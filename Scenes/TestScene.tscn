@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhe8rhtxhoubg"]
+[gd_scene load_steps=5 format=3 uid="uid://dhe8rhtxhoubg"]
 
-[ext_resource type="Script" uid="uid://doglsixggjm3b" path="res://Scripts/Scene.cs" id="1_b5ayd"]
+[ext_resource type="Script" uid="uid://doglsixggjm3b" path="res://Scripts/Props/Scene.cs" id="1_b5ayd"]
 [ext_resource type="PackedScene" uid="uid://cuoncfhv281xr" path="res://Entities/Characters/PlayerEntity.tscn" id="2_5lt6y"]
+[ext_resource type="PackedScene" uid="uid://irg85jgmckxq" path="res://Entities/Props/DoorEntity.tscn" id="3_8k7wh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0r02p"]
 size = Vector2(1165, 118)
@@ -19,3 +20,6 @@ shape = SubResource("RectangleShape2D_0r02p")
 
 [node name="CharacterEntity" parent="." instance=ExtResource("2_5lt6y")]
 position = Vector2(469, 302)
+
+[node name="DoorEntity" parent="." instance=ExtResource("3_8k7wh")]
+position = Vector2(901, 456)

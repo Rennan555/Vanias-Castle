@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://irg85jgmckxq"]
+
+[ext_resource type="Texture2D" uid="uid://bous41dyptvvo" path="res://Assets/Sprites/icon.svg" id="1_bvu3d"]
+[ext_resource type="Script" uid="uid://mrsdy0lbckcy" path="res://Scripts/Props/Door.cs" id="1_pmxr4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmxr4"]
+size = Vector2(80, 148)
+
+[node name="DoorEntity" type="Node2D"]
+script = ExtResource("1_pmxr4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.625, 1.1484375)
+texture = ExtResource("1_bvu3d")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_pmxr4")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -105.0
+offset_right = 20.0
+offset_bottom = -82.0
+grow_horizontal = 2
+text = "Aperte CIMA para entrar"
+
+[connection signal="body_entered" from="Area2D" to="." method="_BodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="_BodyExited"]
