@@ -1,25 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhe8rhtxhoubg"]
+[gd_scene load_steps=3 format=3 uid="uid://dhe8rhtxhoubg"]
 
-[ext_resource type="Script" uid="uid://doglsixggjm3b" path="res://Scripts/Props/Scene.cs" id="1_b5ayd"]
-[ext_resource type="PackedScene" uid="uid://cuoncfhv281xr" path="res://Entities/Characters/PlayerEntity.tscn" id="2_5lt6y"]
+[ext_resource type="PackedScene" uid="uid://iypqb0n7x8aa" path="res://Scenes/BaseScene.tscn" id="1_5lt6y"]
 [ext_resource type="PackedScene" uid="uid://irg85jgmckxq" path="res://Entities/Props/DoorEntity.tscn" id="3_8k7wh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0r02p"]
-size = Vector2(1165, 118)
+[node name="TestScene" instance=ExtResource("1_5lt6y")]
 
-[node name="TestScene" type="Node2D"]
-script = ExtResource("1_b5ayd")
+[node name="Door1" parent="DoorsNode" index="0" instance=ExtResource("3_8k7wh")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(579, 590)
-shape = SubResource("RectangleShape2D_0r02p")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-
-[node name="CharacterEntity" parent="." instance=ExtResource("2_5lt6y")]
-position = Vector2(469, 302)
-
-[node name="DoorEntity" parent="." instance=ExtResource("3_8k7wh")]
-position = Vector2(901, 456)
+[node name="Door2" parent="DoorsNode" index="1" instance=ExtResource("3_8k7wh")]
