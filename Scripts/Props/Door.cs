@@ -13,6 +13,8 @@ public partial class Door : Node2D
 	private string nextDoorName;
 	private bool isOnDoor = false;
 	
+	private Node sceneSwitcher;
+	
 	[Export]
 	private Label label;
 	private Marker2D spawnMarker;
@@ -21,6 +23,7 @@ public partial class Door : Node2D
 	
 	public override void _Ready()
 	{
+		this.sceneSwitcher = GetTree().CurrentScene;
 		this.label = GetNode<Label>("Label");
 		this.spawnMarker = GetNode<Marker2D>("SpawnMarker");
 		this.currentScene = GetTree().CurrentScene;
@@ -34,12 +37,7 @@ public partial class Door : Node2D
 			// TODO: Impedir que o player precione mais de uma vez para entrar na porta, está bugando
 			SetProcess(false);
 			
-			PackedScene nextScene = GD.Load<PackedScene>($"res://Scenes/{this.nextSceneName}.tscn");
-			Scene next = nextScene.Instantiate<Scene>();
-			next.setInitialDoor(this.nextDoorName);
-			GetTree().Root.AddChild(next);
-			this.currentScene.QueueFree();
-			this.player.QueueFree();
+			this.sceneSwitcher.EmitSignal(SceneSwitcher.SignalName.GoToScene, this.nextSceneName, this.nextDoorName);			this.player.QueueFree();
 		}
 	}
 	

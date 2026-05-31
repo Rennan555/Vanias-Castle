@@ -4,3 +4,7 @@
 
 [node name="SceneSwitcher" type="Node2D"]
 script = ExtResource("1_l8gqp")
+
+[node name="CurrentSceneNode" type="Node2D" parent="."]
+
+[connection signal="GoToScene" from="." to="." method="_ChangeScene"]
