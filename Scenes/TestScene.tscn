@@ -16,7 +16,7 @@ nextDoorName = "Door2"
 
 [node name="Door2" parent="DoorsNode" index="1" instance=ExtResource("3_8k7wh")]
 position = Vector2(252, 372)
-nextSceneName = "TestScene"
+nextSceneName = "TestScene2"
 nextDoorName = "Door1"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]

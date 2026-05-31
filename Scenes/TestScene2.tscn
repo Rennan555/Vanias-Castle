@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw70xmwq3ow66"]
+
+[ext_resource type="PackedScene" uid="uid://iypqb0n7x8aa" path="res://Scenes/BaseScene.tscn" id="1_i50wb"]
+[ext_resource type="PackedScene" uid="uid://bc1r1mfnh2b1a" path="res://Entities/Props/DoorEntity.tscn" id="2_wo4lw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo4lw"]
+size = Vector2(1344, 422)
+
+[node name="BaseScene" instance=ExtResource("1_i50wb")]
+
+[node name="Door1" parent="DoorsNode" index="0" instance=ExtResource("2_wo4lw")]
+position = Vector2(338, 192)
+nextSceneName = "TestScene"
+nextDoorName = "Door2"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(542, 497)
+shape = SubResource("RectangleShape2D_wo4lw")
