@@ -4,7 +4,7 @@ using System;
 public partial class SceneSwitcher : Node2D
 {
 	[Signal]
-	public delegate void GoToSceneEventHandler(string nextScene, string nextDoor);
+	public delegate void GoToSceneEventHandler(string nextScene, string nextDoor, Node2D player);
 	
 	private const string scenesFolder = "Tests";
 	
@@ -31,8 +31,12 @@ public partial class SceneSwitcher : Node2D
 	{
 		this.currentSceneNode = GetNode<Node2D>("CurrentSceneNode");
 		PackedScene packedScene = GD.Load<PackedScene>(this.scenesDictionary[scenesEnum.TestScene1]);
+		
+		PackedScene playerEntity = GD.Load<PackedScene>("res://Entities/Characters/PlayerEntity.tscn");
+		Player newPlayer = playerEntity.Instantiate<Player>();
+		
 		this.currentScene = packedScene.Instantiate<Scene>();
-		this.currentScene.setInitialDoor("Door1");
+		this.currentScene.setup("Door1", newPlayer);
 		this.currentSceneNode.AddChild(this.currentScene);
 	}
 	
@@ -40,7 +44,7 @@ public partial class SceneSwitcher : Node2D
 	{
 	}
 	
-	public void _ChangeScene(string nextScene, string nextDoor)
+	public void _ChangeScene(string nextScene, string nextDoor, Node2D player)
 	{
 		if (this.currentScene != null)
 		{
@@ -50,7 +54,7 @@ public partial class SceneSwitcher : Node2D
 		
 		PackedScene newScene = GD.Load<PackedScene>($"res://Scenes/{scenesFolder}/{nextScene}.tscn");
 		this.currentScene = newScene.Instantiate<Scene>();
-		this.currentScene.setInitialDoor(nextDoor);
+		this.currentScene.setup(nextDoor, player);
 		
 		this.currentSceneNode.AddChild(this.currentScene);
 	}

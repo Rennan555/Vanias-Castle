@@ -4,7 +4,7 @@ using System;
 public partial class Door : Node2D
 {
 	[Signal]
-	public delegate void SpawnPlayerEventHandler();
+	public delegate void SpawnPlayerEventHandler(Node2D player);
 	
 	[Export]
 	private string nextSceneName;
@@ -34,10 +34,9 @@ public partial class Door : Node2D
 		if (Input.IsActionJustReleased("Up") && this.isOnDoor)
 		{
 			// Inicializa próxima cena e muda
-			// TODO: Impedir que o player precione mais de uma vez para entrar na porta, está bugando
 			SetProcess(false);
 			
-			this.sceneSwitcher.EmitSignal(SceneSwitcher.SignalName.GoToScene, this.nextSceneName, this.nextDoorName);			this.player.QueueFree();
+			this.sceneSwitcher.EmitSignal(SceneSwitcher.SignalName.GoToScene, this.nextSceneName, this.nextDoorName, this.player);
 		}
 	}
 	
@@ -61,10 +60,8 @@ public partial class Door : Node2D
 	}
 	
 	// Spawnar player no lugar do marker
-	public void _SpawnPlayer()
+	public void _SpawnPlayer(Node2D player)
 	{
-		PackedScene playerEntity = GD.Load<PackedScene>("res://Entities/Characters/PlayerEntity.tscn");
-		Player player = playerEntity.Instantiate<Player>();
 		player.GlobalPosition = this.spawnMarker.GlobalPosition;
 		GetTree().CurrentScene.AddChild(player);
 	}

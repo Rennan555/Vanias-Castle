@@ -7,10 +7,12 @@ public partial class Scene : Node2D
 	private string initialDoor = "";
 	private Node2D doorsNode;
 	private Godot.Collections.Array<Godot.Node> doors;
+	private Node2D currentPlayer;
 	
-	public void setInitialDoor(string doorName)
+	public void setup(string doorName, Node2D player)
 	{
 		this.initialDoor = doorName;
+		this.currentPlayer = player;
 	}
 	
 	public override void _Ready()
@@ -21,10 +23,8 @@ public partial class Scene : Node2D
 		if (this.initialDoor != "")
 		{
 			// Ativa função de Door para spawnar o player
-			GD.Print(this.initialDoor);
-			
 			Door initialDoor = GetNode<Door>("DoorsNode/" + this.initialDoor);
-			initialDoor.EmitSignal(Door.SignalName.SpawnPlayer);
+			initialDoor.EmitSignal(Door.SignalName.SpawnPlayer, this.currentPlayer);
 		}
 	}
 	
