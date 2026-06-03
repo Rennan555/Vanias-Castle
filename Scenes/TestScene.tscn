@@ -10,12 +10,12 @@ size = Vector2(1272, 31)
 initialDoor = "Door1"
 
 [node name="Door1" parent="DoorsNode" index="0" instance=ExtResource("3_8k7wh")]
-position = Vector2(536, 349)
+position = Vector2(61, 372)
 nextSceneName = "TestScene"
 nextDoorName = "Door2"
 
 [node name="Door2" parent="DoorsNode" index="1" instance=ExtResource("3_8k7wh")]
-position = Vector2(252, 372)
+position = Vector2(949, 372)
 nextSceneName = "TestScene2"
 nextDoorName = "Door1"
 

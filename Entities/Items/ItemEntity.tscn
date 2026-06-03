@@ -1,12 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://crq81uvef2sxn"]
+[gd_scene load_steps=4 format=3 uid="uid://crq81uvef2sxn"]
 
 [ext_resource type="Script" uid="uid://crt8pacmlc6be" path="res://Scripts/Items/Item.cs" id="1_qeru8"]
+[ext_resource type="Texture2D" uid="uid://bous41dyptvvo" path="res://Assets/Sprites/icon.svg" id="2_2xqlg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gboao"]
+radius = 8.0
 
 [node name="ItemEntity" type="Node2D"]
 script = ExtResource("1_qeru8")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_2xqlg")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource("CircleShape2D_gboao")
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_BodyEntered"]

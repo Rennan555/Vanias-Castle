@@ -3,16 +3,19 @@ using System;
 
 public partial class Item : Node2D
 {
-	// TODO
-	// [Export]
-	// private string updateName;
-	// private Update updateObject;
+	private Area2D CollectArea;
 	
 	public override void _Ready()
 	{
+		this.CollectArea = GetNode<Area2D>("CollisionArea");
 	}
 	
-	public override void _Process(double delta)
+	public void _BodyEntered(Node2D body)
 	{
+		if (body is Player)
+		{
+			// função de atualizar upgrade
+			QueueFree();
+		}
 	}
 }
