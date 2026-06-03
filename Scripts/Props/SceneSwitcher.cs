@@ -6,23 +6,31 @@ public partial class SceneSwitcher : Node2D
 	[Signal]
 	public delegate void GoToSceneEventHandler(string nextScene, string nextDoor);
 	
+	private const string scenesFolder = "Tests";
+	
 	private Node2D currentSceneNode;
 	private Scene currentScene;
 	
 	private enum scenesEnum
 	{
-		TestScene,
+		TestScene1,
+		TestScene2,
+		TestScene3,
+		TestScene4,
 	}
 	
 	private readonly System.Collections.Generic.Dictionary<scenesEnum, string> scenesDictionary = new()
 	{
-		{ scenesEnum.TestScene, "res://Scenes/TestScene.tscn" }
+		{ scenesEnum.TestScene1, "res://Scenes/Tests/TestScene1.tscn" },
+		{ scenesEnum.TestScene2, "res://Scenes/Tests/TestScene2.tscn" },
+		{ scenesEnum.TestScene3, "res://Scenes/Tests/TestScene3.tscn" },
+		{ scenesEnum.TestScene4, "res://Scenes/Tests/TestScene4.tscn" },
 	};
 	
 	public override void _Ready()
 	{
 		this.currentSceneNode = GetNode<Node2D>("CurrentSceneNode");
-		PackedScene packedScene = GD.Load<PackedScene>(this.scenesDictionary[scenesEnum.TestScene]);
+		PackedScene packedScene = GD.Load<PackedScene>(this.scenesDictionary[scenesEnum.TestScene1]);
 		this.currentScene = packedScene.Instantiate<Scene>();
 		this.currentScene.setInitialDoor("Door1");
 		this.currentSceneNode.AddChild(this.currentScene);
@@ -40,7 +48,7 @@ public partial class SceneSwitcher : Node2D
 			this.currentSceneNode.RemoveChild(currentScene);
 		}
 		
-		PackedScene newScene = GD.Load<PackedScene>($"res://Scenes/{nextScene}.tscn");
+		PackedScene newScene = GD.Load<PackedScene>($"res://Scenes/{scenesFolder}/{nextScene}.tscn");
 		this.currentScene = newScene.Instantiate<Scene>();
 		this.currentScene.setInitialDoor(nextDoor);
 		

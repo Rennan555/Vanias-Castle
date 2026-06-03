@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpn8o8utd7x54"]
+
+[ext_resource type="PackedScene" uid="uid://iypqb0n7x8aa" path="res://Scenes/BaseScene.tscn" id="1_offxn"]
+[ext_resource type="PackedScene" uid="uid://bc1r1mfnh2b1a" path="res://Entities/Props/DoorEntity.tscn" id="2_7cwlc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cwlc"]
+size = Vector2(1249, 388)
+
+[node name="TestScene4" instance=ExtResource("1_offxn")]
+
+[node name="Door1" parent="DoorsNode" index="0" instance=ExtResource("2_7cwlc")]
+position = Vector2(212, 327)
+nextSceneName = "TestScene2"
+nextDoorName = "Door3"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(605.5, 597)
+shape = SubResource("RectangleShape2D_7cwlc")
+
+[node name="Label" type="Label" parent="." index="2"]
+offset_left = 603.0
+offset_top = 4.0
+offset_right = 656.0
+offset_bottom = 27.0
+text = "Nível 4"

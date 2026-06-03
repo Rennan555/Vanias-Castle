@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw70xmwq3ow66"]
+
+[ext_resource type="PackedScene" uid="uid://iypqb0n7x8aa" path="res://Scenes/BaseScene.tscn" id="1_4jcfn"]
+[ext_resource type="PackedScene" uid="uid://bc1r1mfnh2b1a" path="res://Entities/Props/DoorEntity.tscn" id="2_6t2aw"]
+[ext_resource type="PackedScene" uid="uid://cjnunon0nup1h" path="res://Entities/Items/DoubleJumpItemEntity.tscn" id="3_d1r21"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo4lw"]
+size = Vector2(1344, 422)
+
+[node name="BaseScene" instance=ExtResource("1_4jcfn")]
+
+[node name="Door1" parent="DoorsNode" index="0" instance=ExtResource("2_6t2aw")]
+position = Vector2(53, 212)
+nextSceneName = "TestScene1"
+nextDoorName = "Door2"
+
+[node name="Door2" parent="DoorsNode" index="1" instance=ExtResource("2_6t2aw")]
+position = Vector2(662, 212)
+nextSceneName = "TestScene3"
+nextDoorName = "Door1"
+
+[node name="Door3" parent="DoorsNode" index="2" instance=ExtResource("2_6t2aw")]
+position = Vector2(883, 212)
+nextSceneName = "TestScene4"
+nextDoorName = "Door1"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(542, 497)
+shape = SubResource("RectangleShape2D_wo4lw")
+
+[node name="DoubleJumpItemEntity" parent="." index="2" instance=ExtResource("3_d1r21")]
+position = Vector2(489, 214)
+
+[node name="Label" type="Label" parent="." index="3"]
+offset_left = 542.0
+offset_top = 3.0
+offset_right = 595.0
+offset_bottom = 26.0
+text = "Nível 2"

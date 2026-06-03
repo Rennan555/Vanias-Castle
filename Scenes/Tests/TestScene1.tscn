@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhe8rhtxhoubg"]
+
+[ext_resource type="PackedScene" uid="uid://iypqb0n7x8aa" path="res://Scenes/BaseScene.tscn" id="1_5hx3p"]
+[ext_resource type="PackedScene" uid="uid://bc1r1mfnh2b1a" path="res://Entities/Props/DoorEntity.tscn" id="2_rplxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lt6y"]
+size = Vector2(1272, 31)
+
+[node name="TestScene" instance=ExtResource("1_5hx3p")]
+initialDoor = "Door1"
+
+[node name="Door1" parent="DoorsNode" index="0" instance=ExtResource("2_rplxx")]
+position = Vector2(61, 372)
+nextSceneName = "TestScene1"
+nextDoorName = "Door2"
+
+[node name="Door2" parent="DoorsNode" index="1" instance=ExtResource("2_rplxx")]
+position = Vector2(949, 372)
+nextSceneName = "TestScene2"
+nextDoorName = "Door1"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(584, 461.5)
+shape = SubResource("RectangleShape2D_5lt6y")
+
+[node name="Label" type="Label" parent="." index="2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 520.0
+offset_right = 573.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nível 1"
