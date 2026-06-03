@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://iypqb0n7x8aa" path="res://Scenes/BaseScene.tscn" id="1_i50wb"]
 [ext_resource type="PackedScene" uid="uid://bc1r1mfnh2b1a" path="res://Entities/Props/DoorEntity.tscn" id="2_wo4lw"]
-[ext_resource type="PackedScene" uid="uid://crq81uvef2sxn" path="res://Entities/Items/ItemEntity.tscn" id="3_2fg5y"]
+[ext_resource type="PackedScene" uid="uid://cjnunon0nup1h" path="res://Entities/Items/DoubleJumpItemEntity.tscn" id="3_2fg5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wo4lw"]
 size = Vector2(1344, 422)
@@ -25,5 +25,5 @@ nextDoorName = "Door2"
 position = Vector2(542, 497)
 shape = SubResource("RectangleShape2D_wo4lw")
 
-[node name="ItemEntity" parent="." index="2" instance=ExtResource("3_2fg5y")]
-position = Vector2(502, 207)
+[node name="DoubleJumpItemEntity" parent="." index="2" instance=ExtResource("3_2fg5y")]
+position = Vector2(489, 214)
